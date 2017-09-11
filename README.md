@@ -1,2 +1,8 @@
 # server
-# lets do it!
+#### lets do it!
+
+- Node.js, Express, Knex, PostgreSQL, and Objection.js
+
+##ERD
+
+![ERD]("ERD/OffCuff.png")
