@@ -5,4 +5,4 @@
 
 ##ERD
 
-![ERD]("ERD/OffCuff.png")
+![ERD]("ERD/OffCuff-ERD.png")
