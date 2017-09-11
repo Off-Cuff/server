@@ -36,3 +36,4 @@ Participants will be associated with a class that is created by a premium user/h
 A retro will be a form of feed back. It contains three sections, Start, Continue, and Stop. Start is what participants should start doing to help their speaking skills. Continue will be things the participants did well and should sharpen or hone in on and continue to develop. The stop is instances where the participants should stop certain actions or habits. The retro will then be available to the class from the host.
 
 ### thank you for stopping in!
+#### oh, I love that shirt....
