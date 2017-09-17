@@ -7,12 +7,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const jwt = require('jsonwebtoken')
-
-
-
-//const authMiddleware = require('./auth/middleware.js')
-//const auth = require('./auth')
-const host = require('./api/host')
+const auth = require('./auth')
+const authMiddleware = require('./auth/middleware.js')
+const host = require('./api/host.js')
 //const auth = require('./auth');
 
 app.use(logger('dev'));
@@ -20,12 +17,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-
-app.use('/api/v1/host', host)
-
-//app.use(authMiddleware.checkTokenSetUser)
-//app.use('/auth', auth);
-
+app.use(authMiddleware.checkTokenSetUser)
+app.use('/api/v1/host', authMiddleware.ensureLoggedIn, host);
+app.use('/auth', auth);
+app.use('/api/v1/host', host);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -14,9 +14,19 @@ exports.seed = function(knex, Promise) {
           retro_id: 1
         },
         {
+          title:"p11",
+          host_id: 1,
+          retro_id: 4
+        },
+        {
           title:"p2",
           host_id: 2,
           retro_id: 2
+        },
+        {
+          title:"p22",
+          host_id: 2,
+          retro_id: 5
         },
         {
           title:"p3",
