@@ -11,7 +11,7 @@ function checkTokenSetUser(req, res, next) {
 				next();
 			} else {
 					console.log(decoded);
-					req.user = decoded;
+					req.host = decoded;
 					next();
 			}
 		});
@@ -21,9 +21,9 @@ function checkTokenSetUser(req, res, next) {
 }
 
 function ensureLoggedIn(req, res, next){
-	console.log('req.person below');
-		console.log(req.user);
-	if(req.user){
+	console.log('req.host below');
+		console.log(req.host);
+	if(req.host){
 		next();
 		console.log('NEXT! allow?');
 	} else {
@@ -34,7 +34,7 @@ function ensureLoggedIn(req, res, next){
 }
 
 function allowAccess(req, res, next) {
-	if(req.user.id == req.params.id) {
+	if(req.host.id == req.params.id) {
 		next();
 	} else {
 		res.status(401);

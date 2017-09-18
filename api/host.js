@@ -18,6 +18,7 @@ router.post('/create-host', (req, res, next) =>{
 })
 
 router.get('/:id/classes', (req,res) =>{
+  console.log('made it to th :id/classes route');
   queries.getAllClassesByHostId(req.params.id).then(classes=>{
     res.json(classes)
   })

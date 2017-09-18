@@ -12,7 +12,10 @@ module.exports = {
     return knex('host').insert(host).returning('*')
   },
   getAllClassesByHostId(host_id){
-    return knex('class').where('host_id', host_id);
+    return knex('host')
+      .join('class', 'host.id', '=', 'class.host_id')
+      .select('class.title', 'class.retro_id')
+      .where('class.host_id', host_id)
   },
   getClassById(id){
     return knex('class').where('id', id)

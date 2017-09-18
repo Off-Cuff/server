@@ -13,13 +13,18 @@ router.get('/', (req, res) => {
 })
 
 function validateUser(Host) {
+  console.log('Host: ', Host);
+  console.log('Host.email: ', Host.email);
+  console.log('Host.password: ', Host.password);
   const validEmail = typeof Host.email == 'string' &&
     Host.email.trim() != '';
   const validPassword = typeof Host.password == 'string' &&
     Host.password.trim() != '' &&
-    Host.password.trim().length >= 4;
+    Host.password.trim().length <= 4;
+    console.log('email', validEmail);
+    console.log('password', validPassword);
 
-  return validEmail && validPassword;
+  return validEmail;
 }
 
 
@@ -66,19 +71,25 @@ router.post('/signup', (req, res, next) => {
         }
       })
   } else {
-    next(new Error('Invalid Password or Email'))
+    next(new Error('Login: Invalid Password or Email'))
   }
 })
 
 router.post('/login', (req, res, next) => {
   if (validateUser(req.body)) {
+    console.log('validateUser')
+    console.log('req.body: ', req.body);
+    console.log(req.body.email);
     Host
       .getUserByEmail(req.body.email)
       .then(host => {
-        console.log('host', host);
+        console.log('host', host); // undefined
         if (host) {
+          console.log(req.body.password);
+          console.log(host.password);
           bcrypt.compare(req.body.password, host.password)
             .then((id) => {
+              console.log(id);
               if (id) {
                 console.log(process.env.TOKEN_SECRET);
                 jwt.sign({
@@ -96,15 +107,22 @@ router.post('/login', (req, res, next) => {
                     alert('Sign-up Successful!')
                   });
               } else {
+                console.log('id if failed');
                 next(new Error('Invalid user'))
               }
+            }).catch(function(error){
+              console.log(error);
             })
           } else {
+            console.log('host if failed');
             next( new Error('Invalid user'))
           }
+        }).catch(function(error){
+          console.log(error);
         })
   } else {
-    next( new Error('Invalid Password or Email'))
+    console.log('valid user failed');
+    next( new Error('Login: Invalid Password or Email'))
   }
 });
 
