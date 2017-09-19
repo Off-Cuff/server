@@ -14,7 +14,7 @@ module.exports = {
   getAllClassesByHostId(host_id){
     return knex('host')
       .join('class', 'host.id', '=', 'class.host_id')
-      .select('class.title', 'class.retro_id')
+      .select('class.title', 'class.retro_id', 'class.id')
       .where('class.host_id', host_id)
   },
   getClassById(id){
@@ -25,5 +25,8 @@ module.exports = {
   },
   createClass(createdClass){
     return knex('class').insert(createdClass).returning('*')
+  },
+  deletClass(id){
+    return knex('class').where('id', id).del()
   }
 }

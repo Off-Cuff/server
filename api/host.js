@@ -37,6 +37,15 @@ router.get('/class/:id', (req,res) =>{
   })
 })
 
+router.delete('/:id', (req,res) =>{
+  console.log(req.body);
+  console.log(req.params.id);
+  queries.deletClass(req.params.id).then(aClass => {
+    res.json(aClass)
+    console.log('delete');
+  })
+})
+
 // router.get('/:host_id/class/:class_id', (req, res) =>{
 //   queries.getAllSessionsByClassId(req.params.host_id, req.params.class_id).then(sessions=>{
 //     console.log(sessions);
