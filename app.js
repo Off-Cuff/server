@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 app.use(authMiddleware.checkTokenSetUser)
-app.use('/api/v1/host', authMiddleware.ensureLoggedIn, host);
+app.use('/api/v1/host', host);
 app.use('/auth', auth);
 app.use('/api/v1/host', host);
 // catch 404 and forward to error handler

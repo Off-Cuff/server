@@ -22,5 +22,8 @@ module.exports = {
   },
   getAllSessionsByClassId(host_id, class_id){
     return knex('session').where('class_id', class_id)
+  },
+  createClass(createdClass){
+    return knex('class').insert(createdClass).returning('*')
   }
 }

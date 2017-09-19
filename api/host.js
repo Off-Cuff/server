@@ -10,8 +10,15 @@ router.get('/:id', (req, res) => {
   })
 })
 
-router.post('/create-host', (req, res, next) =>{
+router.post(':id/create-host', (req, res, next) =>{
   queries.createHost(req.body).then(result =>{
+    console.log(req.body);
+    res.send(result);
+  })
+})
+
+router.post('/create-class', (req, res, next) =>{
+  queries.createClass(req.body).then(result =>{
     console.log(req.body);
     res.send(result);
   })
