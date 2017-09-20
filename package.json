@@ -19,6 +19,7 @@
     "middleware": "^1.0.0",
     "moment": "^2.15.2",
     "morgan": "~1.8.1",
+    "pg": "^7.3.0",
     "serve-favicon": "~2.4.2"
   }
 }
