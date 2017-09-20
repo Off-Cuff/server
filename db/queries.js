@@ -20,11 +20,20 @@ module.exports = {
   getClassById(id){
     return knex('class').where('id', id)
   },
+  getSessionByClassId(class_id){
+    return knex('class')
+      .join('session', 'class.id', '=', 'session.class_id')
+      .select('session.title', 'session.class_id')
+      .where('session.class_id', class_id)
+  },
   getAllSessionsByClassId(host_id, class_id){
     return knex('session').where('class_id', class_id)
   },
   createClass(createdClass){
     return knex('class').insert(createdClass).returning('*')
+  },
+  createSession(createdSession){
+    return knex('session').insert(createdSession).returning('*')
   },
   deletClass(id){
     return knex('class').where('id', id).del()

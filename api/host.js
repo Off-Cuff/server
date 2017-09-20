@@ -24,6 +24,13 @@ router.post('/create-class', (req, res, next) =>{
   })
 })
 
+router.post('/create-session', (req, res, next) =>{
+  queries.createSession(req.body).then(result =>{
+    console.log(req.body);
+    res.send(result);
+  })
+})
+
 router.get('/:id/classes', (req,res) =>{
   console.log('made it to th :id/classes route');
   queries.getAllClassesByHostId(req.params.id).then(classes=>{
@@ -37,6 +44,13 @@ router.get('/class/:id', (req,res) =>{
   })
 })
 
+router.get('/class/sessions/:class_id', (req, res) => {
+  console.log('here: ', req.params.class_id);
+  queries.getSessionByClassId(req.params.class_id).then(sessions => {
+    res.json(sessions)
+  })
+})
+
 router.delete('/:id', (req,res) =>{
   console.log(req.body);
   console.log(req.params.id);
@@ -46,12 +60,6 @@ router.delete('/:id', (req,res) =>{
   })
 })
 
-// router.get('/:host_id/class/:class_id', (req, res) =>{
-//   queries.getAllSessionsByClassId(req.params.host_id, req.params.class_id).then(sessions=>{
-//     console.log(sessions);
-//     res.json(sessions)
-//   })
-// })
 
 
 
