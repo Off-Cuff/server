@@ -12,8 +12,8 @@ exports.seed = function(knex, Promise) {
       return knex('host').insert([
         {
           name: 'Austin',
-          email:'austin@austin.com',
-          password:bcrypt.hashSync('Austin', salt)
+          email:'Austin@gmail.com',
+          password:bcrypt.hashSync('usa20034', salt)
         },{
           name:'Taylor',
           email:'Taylor@taylor.com',

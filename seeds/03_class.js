@@ -9,12 +9,12 @@ exports.seed = function(knex, Promise) {
 
       return knex('class').insert([
         {
-          title:"p1",
+          title:"Public Speaking 101",
           host_id: 1,
           retro_id: 1
         },
         {
-          title:"p11",
+          title:"Public Speaking 102",
           host_id: 1,
           retro_id: 4
         },

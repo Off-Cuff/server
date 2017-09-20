@@ -6,19 +6,19 @@ exports.seed = function(knex, Promise) {
 
       return knex('session').insert([
         {
-          title: "week1",
+          title: "Charlie",
           pic_quantity:"3",
           pic_duration:"30",
           class_id: 1
         },
         {
-          title: "week2",
+          title: "Kelly",
           pic_quantity:"3",
           pic_duration:"30",
           class_id: 1
         },
         {
-          title: "week3",
+          title: "Taylor",
           pic_quantity:"3",
           pic_duration:"30",
           class_id: 2
